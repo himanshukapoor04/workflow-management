@@ -1,0 +1,26 @@
+<jboss-deployment-structure>
+    <deployment>
+        <exclusions>
+            <module name="org.apache.log4j" />
+        </exclusions>
+        <!-- <dependencies>
+            <module name="org.infinispan" services="import" />
+            <module name="org.jboss.as.naming" />
+            <module name="org.apache.cxf"/>
+            <module name="org.apache.cxf.impl"/>
+        </dependencies> -->
+    </deployment>
+   <!--  <sub-deployment name="core.jar">
+        <dependencies>
+            <module name="org.jboss.xnio" />
+            <module name="org.infinispan" services="import" />
+            <module name="org.apache.httpcomponents"/>
+        </dependencies>
+    </sub-deployment>
+    <sub-deployment name="webadmin.war">
+        <dependencies>
+            <module name="org.jboss.xnio" />
+        </dependencies>
+    </sub-deployment> -->
+    
+</jboss-deployment-structure>

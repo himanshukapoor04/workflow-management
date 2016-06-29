@@ -1,0 +1,84 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.nagarro.cwms.workflow-management</groupId>
+    <artifactId>workflow-management</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <groupId>com.nagarro.cwms.workflow-management.workflow-management-dist</groupId>
+  <artifactId>workflow-management</artifactId>
+  <packaging>ear</packaging>
+  <build>
+  	<finalName>${earname}</finalName>
+  	<resources>
+  		<resource>
+  			<directory>src/main/application</directory>
+  			<targetPath>${project.build.directory}/${earname}</targetPath>
+  			<filtering>true</filtering>
+  		</resource>
+  	</resources>
+  	<plugins>
+  		<plugin>
+  			<groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ear-plugin</artifactId>
+                <configuration>
+                    <description>${project.artifactId}-${project.version}.${project.packaging}</description>
+                    <version>6</version>
+                    <defaultLibBundleDir>lib</defaultLibBundleDir>
+                    <displayName>${earname}</displayName>
+                    <filtering>true</filtering>
+               		<modules>
+               			<ejbModule>
+               				<groupId>com.nagarro.cwms.workflow-management.core</groupId>
+               				<artifactId>core</artifactId>
+               				<!-- <bundlefileName>core.jar</bundlefileName> -->
+               			</ejbModule>
+               			<ejbModule>
+               				<groupId>com.nagarro.cwms.workflow-management.workflow-engine</groupId>
+               				<artifactId>workflow-engine</artifactId>
+               				<!-- <bundlefileName>workflow-engine.jar</bundlefileName> -->
+               			</ejbModule>
+               			<webModule>
+               				<groupId>com.nagarro.cwms.workflow-management.webadmin</groupId>
+               				<artifactId>webadmin</artifactId>
+               				<!-- <bundleFileName>webadmin.war</bundleFileName> -->
+               			</webModule>
+               			<webModule>
+               				<groupId>com.nagarro.cwms.workflow-management.webservice-rest</groupId>
+               				<artifactId>webservice-rest</artifactId>
+               				<!-- <bundleFileName>webservice-rest.war</bundleFileName> -->
+               			</webModule>
+               		</modules>    
+                </configuration>
+  		</plugin>
+  	</plugins>
+  </build>
+ <!--  <dependencyManagement> -->
+  	<dependencies>
+  		<dependency>
+  			<groupId>com.nagarro.cwms.workflow-management.core</groupId>
+            <artifactId>core</artifactId>
+            <type>ejb</type>
+            <version>0.0.1-SNAPSHOT</version>
+  		</dependency>
+  		<dependency>
+  			<groupId>com.nagarro.cwms.workflow-management.workflow-engine</groupId>
+			<artifactId>workflow-engine</artifactId>
+			<type>ejb</type>
+			<version>0.0.1-SNAPSHOT</version>
+  		</dependency>
+  		<dependency>
+  			<groupId>com.nagarro.cwms.workflow-management.webadmin</groupId>
+			<artifactId>webadmin</artifactId>
+			<type>war</type>
+			<version>0.0.1-SNAPSHOT</version>
+  		</dependency>
+  		<dependency>
+  			<groupId>com.nagarro.cwms.workflow-management.webservice-rest</groupId>
+            <artifactId>webservice-rest</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+			<type>war</type>
+  		</dependency>
+  	</dependencies>
+ <!--  </dependencyManagement> -->
+</project>
