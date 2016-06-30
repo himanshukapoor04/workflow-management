@@ -1,17 +1,33 @@
 package com.nagarro.cwms.execution.model;
 
-import com.nagarro.cwms.model.Workflow;
+import java.io.Serializable;
+import java.util.concurrent.ThreadLocalRandom;
+
+import com.nagarro.cwms.model.WorkflowDefinition;
 
 /**
  * Workflow Instance entity. It will store the instance details of the workflow.
  *  
  *
  */
-public class WorkflowInstance {
+public class WorkflowInstance implements Serializable {
 
+	/** Default Serial Version Id*/
+	private static final long serialVersionUID = -11346497263010661L;
 	private long id;
-	private Workflow workflow;
+	private WorkflowDefinition workflow;
 	private InstanceState workflowState;
+	
+	public WorkflowInstance() {
+		super();
+	}
+	
+	public WorkflowInstance(WorkflowDefinition workflow) {
+		/* Dummy random generator for POC to be replaced by entity manager */
+		this.id = ThreadLocalRandom.current().nextLong(10000);
+		this.workflow = workflow;
+		this.workflowState = InstanceState.RUNNABLE;
+	}
 
 	public long getId() {
 		return id;
@@ -21,11 +37,11 @@ public class WorkflowInstance {
 		this.id = id;
 	}
 
-	public Workflow getWorkflow() {
+	public WorkflowDefinition getWorkflow() {
 		return workflow;
 	}
 
-	public void setWorkflow(Workflow workflow) {
+	public void setWorkflow(WorkflowDefinition workflow) {
 		this.workflow = workflow;
 	}
 
