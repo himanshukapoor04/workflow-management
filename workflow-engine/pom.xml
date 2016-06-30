@@ -8,4 +8,12 @@
   <groupId>com.nagarro.cwms.workflow-management.workflow-engine</groupId>
   <artifactId>workflow-engine</artifactId>
   <packaging>ejb</packaging>
+  <dependencies>
+  	<dependency>
+  		 <groupId>com.nagarro.cwms.workflow-management.model</groupId>
+  		 <artifactId>model</artifactId>
+  		 <type>jar</type>
+  		 <version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  </dependencies>
 </project>

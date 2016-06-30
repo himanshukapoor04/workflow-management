@@ -40,6 +40,7 @@
   	<module>webservice-rest</module>
   	<module>workflow-engine</module>
   	<module>workflow-management-dist</module>
+  	<module>model</module>
   </modules>
   <build>
   	<pluginManagement>

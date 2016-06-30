@@ -16,5 +16,10 @@
             <type>pom</type>
             <version>3.0.3.Final</version>
         </dependency>
+     <dependency>
+  		 <groupId>com.nagarro.cwms.workflow-management.model</groupId>
+  		 <artifactId>model</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
   </dependencies>
 </project>
