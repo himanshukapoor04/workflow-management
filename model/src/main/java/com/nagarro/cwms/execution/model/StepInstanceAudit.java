@@ -1,5 +1,8 @@
 package com.nagarro.cwms.execution.model;
 
+import java.util.Date;
+import java.util.concurrent.ThreadLocalRandom;
+
 /**
  * POJO to maintain the step execution details. It will contains step instance
  * which is currently running along with it comments will be stored which will
@@ -13,6 +16,7 @@ public class StepInstanceAudit {
 	private StepInstance stepInstance;
 	private InstanceState changedState;
 	private String comments;
+	private Date changedDate;
 
 	public StepInstanceAudit() {
 		super();
@@ -49,5 +53,17 @@ public class StepInstanceAudit {
 	public void setComments(String comments) {
 		this.comments = comments;
 	}
+
+	public StepInstanceAudit(StepInstance stepInstance,
+			InstanceState changedState, String comments) {
+		super();
+		this.id = ThreadLocalRandom.current().nextLong(10000);
+		this.stepInstance = stepInstance;
+		this.changedState = changedState;
+		this.comments = comments;
+		this.changedDate = new Date();
+	}
+	
+	
 
 }

@@ -1,6 +1,7 @@
 package com.nagarro.cwms.execution.model;
 
 import java.util.Date;
+import java.util.concurrent.ThreadLocalRandom;
 
 import com.nagarro.cwms.model.Step;
 
@@ -82,6 +83,14 @@ public class StepInstance {
 
 	public void setUpdatedBy(String updatedBy) {
 		this.updatedBy = updatedBy;
+	}
+	
+	public StepInstance(Step step, WorkflowInstance workflowInstance) {
+		this.step = step;
+		this.stepState = InstanceState.RUNNABLE;
+		this.workflowInstance = workflowInstance;
+		/* Dummy random generator for POC to be replaced by entity manager */
+		this.id = ThreadLocalRandom.current().nextLong(10000);
 	}
 
 }
