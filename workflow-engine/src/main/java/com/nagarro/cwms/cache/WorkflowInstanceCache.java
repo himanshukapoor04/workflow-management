@@ -7,7 +7,7 @@ import com.nagarro.cwms.execution.model.InstanceState;
 
 /**
  * Temporary cache to hold the workflow Instance status.
- * In long run it would be replaced by EhCache.
+ * In long run it would be replaced by Infinispan.
  *
  */
 public class WorkflowInstanceCache {
@@ -20,9 +20,10 @@ public class WorkflowInstanceCache {
 	
 	private Map<Long, InstanceState> cache = new ConcurrentHashMap<Long, InstanceState>();
 	
-	public void put(Long id, InstanceState instanceState) {
+	public synchronized void put(Long id, InstanceState instanceState) {
 		if(cache.containsKey(id)) {
-			cache.replace(id, instanceState);
+			cache.remove(id);
+			cache.put(id, instanceState);
 		} else {
 			cache.put(id, instanceState);
 		}

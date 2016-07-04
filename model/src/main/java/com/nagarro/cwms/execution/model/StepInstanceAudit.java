@@ -53,6 +53,10 @@ public class StepInstanceAudit {
 	public void setComments(String comments) {
 		this.comments = comments;
 	}
+	
+	public Date getChangedDate() {
+		return changedDate;
+	}
 
 	public StepInstanceAudit(StepInstance stepInstance,
 			InstanceState changedState, String comments) {

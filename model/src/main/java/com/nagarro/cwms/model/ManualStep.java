@@ -1,6 +1,12 @@
 package com.nagarro.cwms.model;
 
-public class ManualStep {
+/**
+ * Entity for manual steps. Manual steps have to be assigned to a user.
+ * This step will contain the name of the user to whom the task has to be
+ * assigned along with details which she supposed to handle.  
+ *
+ */
+public class ManualStep implements Step {
 
 	private long id;
 	private String name;
