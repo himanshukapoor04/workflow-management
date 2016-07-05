@@ -12,7 +12,7 @@ import com.nagarro.cwms.execution.model.InstanceState;
  */
 public class StepInstanceCache {
 	
-	public static StepInstanceCache INSTACE = new StepInstanceCache();
+	private static StepInstanceCache INSTACE = new StepInstanceCache();
 	
 	private StepInstanceCache() {
 		

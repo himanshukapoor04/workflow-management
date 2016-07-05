@@ -7,7 +7,7 @@ public class ScriptStep implements Step {
 	private long id;
 	private String name;
 	private String description;
-	private String fileLocation;
+	private String fileName;
 	private List<String> paramNames;
 
 	public long getId() {
@@ -34,12 +34,12 @@ public class ScriptStep implements Step {
 		this.description = description;
 	}
 
-	public String getFileLocation() {
-		return fileLocation;
+	public String getFileName() {
+		return fileName;
 	}
 
-	public void setFileLocation(String fileLocation) {
-		this.fileLocation = fileLocation;
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
 	}
 
 	public List<String> getParamNames() {

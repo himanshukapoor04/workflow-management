@@ -14,6 +14,7 @@ public class StepManagerImpl implements StepManager {
 
 	public StepInstance createStepInstance(Step step, WorkflowInstance workflowInstance) {
 		StepInstance stepInstance = new StepInstance(step, workflowInstance);
+		
 		return stepInstance;
 	}
 
