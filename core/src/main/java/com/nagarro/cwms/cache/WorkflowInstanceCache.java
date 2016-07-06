@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import com.nagarro.cwms.execution.model.InstanceState;
+import com.nagarro.cwms.execution.model.WorkflowInstance;
 
 /**
  * Temporary cache to hold the workflow Instance status.
@@ -19,14 +20,14 @@ public class WorkflowInstanceCache {
 		
 	}
 	
-	private Map<Long, Map<Long,InstanceState>> cache = new ConcurrentHashMap<>();
+	private Map<Long, Map<Long, WorkflowInstance>> cache = new ConcurrentHashMap<>();
 	
-	public synchronized void put(Long workflowId, Long instanceId, InstanceState instanceState) {
+	public synchronized void put(Long workflowId, Long instanceId, WorkflowInstance workflowInstance) {
 		if(cache.containsKey(workflowId)) {
-			cache.get(workflowId).put(instanceId, instanceState);
+			cache.get(workflowId).put(instanceId, workflowInstance);
 		} else {
-			Map<Long, InstanceState> instanceMap = new ConcurrentHashMap<Long, InstanceState>();
-			instanceMap.put(instanceId, instanceState);
+			Map<Long, WorkflowInstance> instanceMap = new ConcurrentHashMap<>();
+			instanceMap.put(instanceId, workflowInstance);
 			cache.put(workflowId,instanceMap);
 		}
 	}
@@ -37,17 +38,17 @@ public class WorkflowInstanceCache {
 		}
 	}
 	
-	public Map<Long, InstanceState> getAllByWorkflowId(Long workflowId) {
+	public Map<Long, WorkflowInstance> getAllByWorkflowId(Long workflowId) {
 		return cache.get(workflowId);
 	}
 	
-	public InstanceState getInstanceStateHealth(Long workFlowId, Long instanceId) {
-		InstanceState instanceState = null;
-		Map<Long , InstanceState> healthMap = cache.get(workFlowId);
+	public WorkflowInstance getInstanceStateHealth(Long workFlowId, Long instanceId) {
+		WorkflowInstance workflowInstance = null;
+		Map<Long , WorkflowInstance> healthMap = cache.get(workFlowId);
 		if(healthMap != null) {
-			instanceState = healthMap.get(instanceId);
+			workflowInstance = healthMap.get(instanceId);
 		} 
-		return instanceState;
+		return workflowInstance;
 	}
 	
 	public static WorkflowInstanceCache getInstance() {

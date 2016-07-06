@@ -3,7 +3,7 @@ package com.nagarro.cwms.cache;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import com.nagarro.cwms.execution.model.InstanceState;
+import com.nagarro.cwms.execution.model.StepInstance;
 
 /**
  * Temporary cache to hold the Workflow step Instance status.
@@ -18,21 +18,25 @@ public class StepInstanceCache {
 		
 	}
 	
-	private Map<Long, InstanceState> cache = new ConcurrentHashMap<Long, InstanceState>();
+	private Map<Long, StepInstance> cache = new ConcurrentHashMap<Long, StepInstance>();
 	
-	public synchronized void put(Long id, InstanceState instanceState) {
+	public synchronized void put(Long id, StepInstance stepInstance) {
 		if(cache.containsKey(id)) {
 			cache.remove(id);
-			cache.put(id, instanceState);
+			cache.put(id, stepInstance);
 		} else {
-			cache.put(id, instanceState);
+			cache.put(id, stepInstance);
 		}
 	}
 	
-	public void remove(Long id) {
+	public synchronized void remove(Long id) {
 		if(cache.containsKey(id)) {
 			cache.remove(id);
 		}
+	}
+	
+	public StepInstance get(Long id) {
+		return cache.get(id);
 	}
 	
 	public static StepInstanceCache getInstance() {

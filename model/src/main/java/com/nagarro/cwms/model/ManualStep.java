@@ -11,14 +11,14 @@ public class ManualStep implements Step {
 	private long id;
 	private String name;
 	private String description;
-	private String assigne;
+	private User assigne;
 	private String taskDetails;
 
 	public ManualStep() {
 		super();
 	}
 
-	public ManualStep(long id, String name, String description, String assigne,
+	public ManualStep(long id, String name, String description, User assigne,
 			String taskDetails) {
 		super();
 		this.id = id;
@@ -52,11 +52,11 @@ public class ManualStep implements Step {
 		this.description = description;
 	}
 
-	public String getAssigne() {
+	public User getAssigne() {
 		return assigne;
 	}
 
-	public void setAssigne(String assigne) {
+	public void setAssigne(User assigne) {
 		this.assigne = assigne;
 	}
 

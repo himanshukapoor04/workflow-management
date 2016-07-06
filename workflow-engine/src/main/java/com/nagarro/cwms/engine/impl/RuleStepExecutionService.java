@@ -10,14 +10,12 @@ import com.nagarro.cwms.execution.model.WorkflowInstance;
 import com.nagarro.cwms.model.Step;
 
 @Stateless
-public class FormStepExecutionService implements StepExecutionService {
+public class RuleStepExecutionService implements StepExecutionService {
 
 	@Override
 	public NextState executeStep(ExecutionContext executionContext, Step step,
 			WorkflowInstance workflowInstance) throws CWMSServiceException {
-		// TODO Auto-generated method stub
 		return NextState.RUN;
-
 	}
 
 }

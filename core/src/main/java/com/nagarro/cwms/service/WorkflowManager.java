@@ -17,4 +17,6 @@ public interface WorkflowManager {
 	List<WorkflowDefinition> getAllWorkflowDefinition();
 	
 	WorkflowDefinition getWorkflowDefinitionById(Long id);
+	
+	List<WorkflowDefinition> getWorkflowsByProject(Long projectId);
 }

@@ -1,5 +1,6 @@
 package com.nagarro.cwms.webadmin.web.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -37,6 +38,19 @@ public class WorkflowInstanceController {
 		}
 		return model;
 	}
+
+	@RequestMapping(value="/allWorkflowsByProject/{projectId}",method = RequestMethod.GET)
+	public ModelAndView showWorkflowsByProjectId(@PathVariable long projectId) {
+		ModelAndView model = new ModelAndView();
+		List<WorkflowDefinition> workflowDefinitions = workflowManager.getWorkflowsByProject(projectId);
+		model.setViewName("showWorkFlow");
+		if(workflowDefinitions != null && !workflowDefinitions.isEmpty()) {
+			model.addObject("workflows",workflowDefinitions);
+		} else {
+			model.addObject("errorMessage", "No Workflow Definitions found");
+		}
+		return model;
+	}
 	
 	@RequestMapping(value = "/processWorkflowInstance/{workflowId}", method = RequestMethod.GET)
 	public ModelAndView processWorkFlowInstance(@PathVariable long workflowId) {
@@ -51,7 +65,11 @@ public class WorkflowInstanceController {
 	public ModelAndView getAllWorkflowInstancesHealth(@PathVariable long workflowId) {
 		ModelAndView modelAndView = new ModelAndView();
 		WorkflowDefinition workflowDefinition = workflowManager.getWorkflowDefinitionById(workflowId);
-		Map<Long, InstanceState> instances = WorkflowInstanceCache.getInstance().getAllByWorkflowId(workflowId);
+		Map<Long, WorkflowInstance> workflowInstances = WorkflowInstanceCache.getInstance().getAllByWorkflowId(workflowId);
+		Map<Long, InstanceState> instances = new HashMap<Long, InstanceState>();
+		for(Long id : workflowInstances.keySet()) {
+			instances.put(id, workflowInstances.get(id).getWorkflowState());
+		}
 		modelAndView.addObject("instanceHealthStatus", instances);
 		modelAndView.addObject("workflow",workflowDefinition);
 		modelAndView.setViewName("showHealthStatus");

@@ -1,8 +1,10 @@
 package com.nagarro.cwms.execution.model;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
+import com.nagarro.cwms.model.Step;
 import com.nagarro.cwms.model.WorkflowDefinition;
 
 /**
@@ -17,6 +19,7 @@ public class WorkflowInstance implements Serializable {
 	private long id;
 	private WorkflowDefinition workflow;
 	private InstanceState workflowState;
+	private List<Step> executedStep;
 	
 	public WorkflowInstance() {
 		super();
@@ -52,5 +55,15 @@ public class WorkflowInstance implements Serializable {
 	public void setWorkflowState(InstanceState workflowState) {
 		this.workflowState = workflowState;
 	}
+
+	public List<Step> getExecutedStep() {
+		return executedStep;
+	}
+
+	public void setExecutedStep(List<Step> executedStep) {
+		this.executedStep = executedStep;
+	}
+	
+	
 
 }

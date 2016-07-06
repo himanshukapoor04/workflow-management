@@ -6,7 +6,9 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
+import com.nagarro.cwms.cache.ProjectDefinitionCache;
 import com.nagarro.cwms.execution.message.model.WorkflowMessage;
+import com.nagarro.cwms.execution.model.Project;
 import com.nagarro.cwms.execution.model.WorkflowInstance;
 import com.nagarro.cwms.helper.WorkflowManagerHelper;
 import com.nagarro.cwms.model.WorkflowDefinition;
@@ -30,19 +32,25 @@ public class WorkflowManagerImpl implements WorkflowManager {
 	}
 
 	public List<WorkflowDefinition> getAllWorkflowDefinition() {
-		/* Returning hard coded data would be replaced by Cache look up and DB look up if not found in cache. */
 		List<WorkflowDefinition> workflowDefinitions = new ArrayList<WorkflowDefinition>();
-		WorkflowDefinition workflowDefinition = new WorkflowDefinition(new Long(1), "Sample Workflow Definition", "Sample Workflow Definition");
-		workflowDefinition.setSteps(WorkflowManagerHelper.getSteps());
-		workflowDefinitions.add(workflowDefinition);
+		ProjectDefinitionCache.getInstance().getAllWorkflowDefinitions();
 		return workflowDefinitions;
 	}
 	
 	public WorkflowDefinition getWorkflowDefinitionById(Long id) {
 		/* Returning hard coded data would be replaced by Cache look up and DB look up if not found in cache. */
-		WorkflowDefinition workflowDefinition = new WorkflowDefinition(new Long(1), "Sample Workflow Definition", "Sample Workflow Definition");
-		workflowDefinition.setSteps(WorkflowManagerHelper.getSteps());
-		return workflowDefinition;
+		List<WorkflowDefinition> workflowDefinitions = ProjectDefinitionCache.getInstance().getAllWorkflowDefinitions();
+		for(WorkflowDefinition workflowDefinition : workflowDefinitions ) {
+			if(workflowDefinition.getId() == id.longValue()) {
+				return workflowDefinition;
+			}
+		}
+		return null;
+	}
+	
+	public List<WorkflowDefinition> getWorkflowsByProject(Long projectId) {
+		Project project = ProjectDefinitionCache.getInstance().getProjectById(projectId);
+		return ProjectDefinitionCache.getInstance().getWorkflowsByProject(project);
 	}
 	
 	
