@@ -14,6 +14,12 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+	 <servlet>
+        <display-name>InitServlet</display-name>
+        <servlet-name>InitServlet</servlet-name>
+        <servlet-class>com.nagarro.cwms.webadmin.servlet.InitServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
 
 	<servlet-mapping>
 		<servlet-name>dispatcherServlet</servlet-name>

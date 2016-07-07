@@ -18,6 +18,10 @@ import com.nagarro.cwms.execution.model.WorkflowInstance;
 import com.nagarro.cwms.model.WorkflowDefinition;
 import com.nagarro.cwms.service.WorkflowManager;
 
+/**
+ * Controller for all the workflow related operations.
+ *
+ */
 @Controller
 @RequestMapping(value="/workflow")
 public class WorkflowInstanceController {

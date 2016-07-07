@@ -9,21 +9,25 @@ import com.nagarro.cwms.execution.model.WorkflowInstance;
 import com.nagarro.cwms.model.Step;
 import com.nagarro.cwms.service.StepManager;
 
+/**
+ * Implementation class for the Step Service.
+ * 
+ */
 @Stateless
 public class StepManagerImpl implements StepManager {
 
-	public StepInstance createStepInstance(Step step, WorkflowInstance workflowInstance) {
-		StepInstance stepInstance = new StepInstance(step, workflowInstance);
-		
-		return stepInstance;
-	}
+    @Override
+    public StepInstance createStepInstance(Step step, WorkflowInstance workflowInstance) {
+        StepInstance stepInstance = new StepInstance(step, workflowInstance);
 
-	public StepInstanceAudit createStepInstanceAudit(StepInstance stepInstance,
-			InstanceState changedState, String comments) {
-		StepInstanceAudit stepInstanceAudit = new StepInstanceAudit(stepInstance, changedState, comments);
-		return stepInstanceAudit;
-	}
-	
-	
+        return stepInstance;
+    }
+
+
+    @Override
+    public StepInstanceAudit createStepInstanceAudit(StepInstance stepInstance, InstanceState changedState, String comments) {
+        StepInstanceAudit stepInstanceAudit = new StepInstanceAudit(stepInstance, changedState, comments);
+        return stepInstanceAudit;
+    }
 
 }

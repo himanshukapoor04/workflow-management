@@ -7,10 +7,17 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.nagarro.cwms.cache.ProjectDefinitionCache;
 
+/**
+ * Controller for project related operations. 
+ *
+ */
 @Controller
 @RequestMapping(value="/project")
 public class ProjectController {
 	
+    /**
+     * Method to get all the projects. 
+     */
 	@RequestMapping(value = "/showAll", method = RequestMethod.GET )
 	public ModelAndView getAllProjects() {
 		ModelAndView modelAndView = new ModelAndView();

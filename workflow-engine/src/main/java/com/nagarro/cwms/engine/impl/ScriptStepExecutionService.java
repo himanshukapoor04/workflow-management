@@ -23,6 +23,11 @@ import com.nagarro.cwms.model.ScriptStep;
 import com.nagarro.cwms.model.Step;
 import com.nagarro.cwms.service.StepManager;
 
+/**
+ * Class to execute the logic related to script based steps which will be 
+ * activities.
+ *
+ */
 @Stateless
 public class ScriptStepExecutionService implements StepExecutionService  {
 	
@@ -31,7 +36,6 @@ public class ScriptStepExecutionService implements StepExecutionService  {
 	
 	public NextState executeStep(ExecutionContext executionContext,
 			Step step, WorkflowInstance workflowInstance) throws CWMSServiceException {
-		System.out.println("Inside Script step");
 		if(executionContext == null ) {
 			throw new CWMSServiceException("Invalid execution context.");
 		}
@@ -50,9 +54,7 @@ public class ScriptStepExecutionService implements StepExecutionService  {
 			} else {
 				fileLocation = "C:\\DATA\\Work\\Scripts\\";
 			}
-			System.out.println("Going to execute JavaScript");
 			scriptEngine.eval(new FileReader(new File(fileLocation.concat(scriptStep.getFileName()))));
-			System.out.println("JavaScript is exected");
 		} catch (ScriptException scriptException) {
 			throw new CWMSServiceException("Error executing script", scriptException);
 		} catch (FileNotFoundException fileNotFoundException) {
@@ -62,7 +64,6 @@ public class ScriptStepExecutionService implements StepExecutionService  {
 			stepInstance.setStepState(InstanceState.FINISHED);
 			StepInstanceCache.getInstance().put(stepInstance.getId(), stepInstance);
 		}
-		System.out.println("Returning next");
 		return NextState.RUN;
 	}
 

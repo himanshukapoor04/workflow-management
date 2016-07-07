@@ -35,7 +35,7 @@
 	</ul>
 </nav>
 <div id="content">
-Welcome Admin!!
+<h4>Welcome Admin!!</h4>
 </div>
 
 </body>

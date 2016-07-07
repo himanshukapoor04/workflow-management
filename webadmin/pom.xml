@@ -17,24 +17,29 @@
   <dependencies>
   <dependency>
             <groupId>org.jboss.spec</groupId>
-            <artifactId>jboss-javaee-6.0</artifactId>
+            <artifactId>jboss-javaee-7.0</artifactId>
             <type>pom</type>
-            <version>3.0.3.Final</version>
+            <version>${jee-version}</version>
         </dependency>
   	<dependency>
 			<groupId>com.nagarro.cwms.workflow-management.model</groupId>
 			<artifactId>model</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.nagarro.cwms.workflow-management.core</groupId>
 			<artifactId>core</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.nagarro.cwms.workflow-management.workflow-engine</groupId>
 			<artifactId>workflow-engine</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.nagarro.cwms.workflow-management.dal</groupId>
+			<artifactId>dal</artifactId>
+			<version>${project.version}</version>
 		</dependency>
   	<dependency>
 		<groupId>org.springframework</groupId>

@@ -1,5 +1,6 @@
 
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <div class="well">
 	<div class="container">
 		<h3>Mail Box</h3>
@@ -8,7 +9,7 @@
 <div>
 	<div class="container">
 		<h4> Welcome ${user.userName}</h4>
-		<c:if test="${empty mailMessages }">
+		<c:if test="${fn:length(mailMessages) > 0 }">
 			<div id="tableContainer">
 				<table class="table">
 					<tr>
@@ -25,7 +26,7 @@
 				</table>
 			</div>
 		</c:if>
-		<c:if test="${empty mailMessages }">
+		<c:if test="${fn:length(mailMessages) == 0 }">
 			<h3>You don't have no new messages!!</h3>
 		</c:if>
 		<div id="showHealth" style="display:none;"></div>

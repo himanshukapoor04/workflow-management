@@ -12,37 +12,29 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.jboss.spec</groupId>
-			<artifactId>jboss-javaee-6.0</artifactId>
+			<artifactId>jboss-javaee-7.0</artifactId>
 			<type>pom</type>
-			<version>3.0.3.Final</version>
+			<version>${jee-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.nagarro.cwms.workflow-management.model</groupId>
 			<artifactId>model</artifactId>
 			<type>jar</type>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.nagarro.cwms.workflow-management.core</groupId>
 			<artifactId>core</artifactId>
 			<type>ejb</type>
 			<scope>provided</scope>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.nagarro.cwms.workflow-management.dal</groupId>
+			<artifactId>dal</artifactId>
+			<type>ejb</type>
+			<scope>provided</scope>
+			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
-	<!-- <build>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.5.1</version>
-					<configuration>
-						<source>1.7</source>
-						<target>1.7</target>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-	</build> -->
 </project>

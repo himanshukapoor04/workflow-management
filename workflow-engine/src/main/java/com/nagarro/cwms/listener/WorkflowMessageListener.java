@@ -12,11 +12,15 @@ import com.nagarro.cwms.engine.WorkflowEngine;
 import com.nagarro.cwms.exception.CWMSException;
 import com.nagarro.cwms.execution.message.model.WorkflowMessage;
 
+
+/**
+ * MDB for listening to the messages sent to the queue. 
+ *
+ */
 @MessageDriven(activationConfig = {
 			@ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
 			@ActivationConfigProperty(propertyName = "destination", propertyValue="queue/test")}
 		)
-
 public class WorkflowMessageListener implements MessageListener {
 
 	@EJB
